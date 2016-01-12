@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <!-- <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" /> -->
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=medium-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" href="css/ed.css" />
+		<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+		<script type="text/javascript" src="cordova.js"></script> 
+		
+		
+        <title>edwalk artist gallery</title>
+    </head>
+    <body>
+		
+		<div id="menu">
+		<ul>
+			<li><a id="menu1" class="selec" href="javascript:void(0)" onclick="app.onSearchWebEvent('art',1); "><img src="img/menu1.png" alt="home" /></a></li>
+			<li><a id="menu2" href="javascript:void(0)" onclick="doMenu('submenu1');"><img src="img/menu2.png" alt="thecnique" /></a></li>
+			<li><a id="menu3" href="javascript:void(0)" onclick="doMenu('submenu2');"><img src="img/menu3.png" alt="theme" /></a></li>
+			<li><a id="menu4" href="javascript:void(0)" onclick="app.showFavs();"><img src="img/menu4.png" alt="blog" /></a></li>
+			<li><a id="menu5" href="javascript:void(0)" onclick="app.showAbout();"><img src="img/menu5.png" alt="about" /></a></li>
+		</ul>
+		</div>
+		<div id="submenu" >
+		<div id="submenu1" style="display:none;">
+			<ul id="tec"><li><a href="javascript:void(0)" onclick="app.onSearchWebEvent('art',1,74,'acrylic');">acrylic</a></li><li><a href="javascript:void(0)" onclick="app.onSearchWebEvent('art',1,70,'digital');">digital</a></li><li><a href="javascript:void(0)" onclick="app.onSearchWebEvent('art',1,72,'ink');">ink</a></li><li><a href="javascript:void(0)" onclick="app.onSearchWebEvent('art',1,71,'pencil');">pencil</a></li><li><a href="javascript:void(0)" onclick="app.onSearchWebEvent('art',1,76,'oil illustration');">oil illustration</a></li><li><a href="javascript:void(0)" onclick="app.onSearchWebEvent('art',1,75,'oil painting');">oil painting</a></li><li><a href="javascript:void(0)" onclick="app.onSearchWebEvent('art',1,77,'watercolor');">watercolor</a></li></ul>
+		</div>
+		<div id="submenu2" style="display:none;">
+			<ul id="tem"><li><a href="javascript:void(0)" onclick="app.onSearchWebEvent('art',1,78,'urban landscape');">urban landscape</a></li><li><a href="javascript:void(0)" onclick="app.onSearchWebEvent('art',1,79,'nature landscape');">nature landscape</a></li><li><a href="javascript:void(0)" onclick="app.onSearchWebEvent('art',1,90,'ocean landscape');">ocean landscape</a></li><li><a href="javascript:void(0)" onclick="app.onSearchWebEvent('art',1,82,'portrait');">portrait</a></li><li><a href="javascript:void(0)" onclick="app.onSearchWebEvent('art',1,80,'wildlife');">wildlife</a></li><li><a href="javascript:void(0)" onclick="app.onSearchWebEvent('art',1,73,'fantasy');">fantasy</a></li><li><a href="javascript:void(0)" onclick="app.onSearchWebEvent('art',1,81,'still life');">still life</a></li></ul>
+		</div>
+		</div>
+		<!--
+		<div id="fliplove" class="transition "> 
+			<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="150px" height="150px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" fill="#990000" xml:space="preserve">
+<path id="template" d="M340.8,98.4c50.7,0,91.9,41.3,91.9,92.3c0,26.2-10.9,49.8-28.3,66.6L256,407.1L105,254.6c-15.8-16.6-25.6-39.1-25.6-63.9
+	c0-51,41.1-92.3,91.9-92.3c38.2,0,70.9,23.4,84.8,56.8C269.8,121.9,302.6,98.4,340.8,98.4 M340.8,83C307,83,276,98.8,256,124.8
+	c-20-26-51-41.8-84.8-41.8C112.1,83,64,131.3,64,190.7c0,27.9,10.6,54.4,29.9,74.6L245.1,418l10.9,11l10.9-11l148.3-149.8
+	c21-20.3,32.8-47.9,32.8-77.5C448,131.3,399.9,83,340.8,83L340.8,83z"/>
+</svg>
+		</div>
+		-->
+		<div id="flippopup">
+		<div id="flipcontent" class="transition stayright"> 
+		
+			<!--
+			<div id="extraimg">
+				<div id="eximg"></div>
+				<div id="exfoot"></div>
+
+			</div>
+			<div id="extracontent" class="transition" >
+				<div id="return"> 
+				<a href="javascript:void(0)" onclick="app.hideExtra();" title="close"><img src="img/close.png" alt="close"></a> 
+				
+				</div>
+				<div id="extitle"></div>
+				<div id="excats"></div>
+				<div id="exsize"></div>
+				 <div id="exnexprev"></div> 
+				<div id="exfoot"></div>
+			</div>
+			-->
+		</div> 
+		</div>
+		
+		
+        <div id="prehome" class="app transition">
+		<img src="img/logo.png" alt="edwalk">
+			<h2>Portfolio of Visual Artist</h2><h1 id="edtitle">edwalk</h1><h3>Painting, Illustration<br/> and sketches</h3><br/>
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device </p>
+                <p class="event received">Loading content...</p>
+				
+				<div class="spinner">
+				  <div class="bounce1"></div>
+				  <div class="bounce2"></div>
+				  <div class="bounce3"></div>
+				</div>
+            </div>
+			<div>
+			
+			
+			</div>
+        </div>
+		
+		<div id="log"></div>
+		
+		<div id="edwalk"></div>
+		<div id='finale'></div>
+        <script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/ls-store.js"></script>
+		<script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script> 
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </body>
+</html>
