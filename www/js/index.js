@@ -90,7 +90,7 @@ function doMenu(id) {
 		}*/
 }
 
-
+var firstArrayMenu;
 var totquiet = true;
 //var menuOpen = false;
 //var menuDiv = "";	
@@ -120,9 +120,10 @@ var app = {
     initialize: function() {
         //alert('initialize');
 		this.store = new LocalStorageStore();
+		//alert('initialize2');
 		this.store.crearArray(function(favs) {  //alert('crearArray');
 			if (typeof favs !== 'undefined' && favs.length > 0) { 
-				var l = favs.length;
+				var l = favs.length; //alert('crearArray2: '+l);
 				for (var i=0; i < l; i++) { 
 					var item = JSON.parse(favs[i]);
 					
@@ -324,7 +325,7 @@ var app = {
 				edwalk.innerHTML = "<div id='topedbar'><h2>"+lologo+""+cattts+""+who+"</h2></div><div id='sticky-anchor'></div><div id='istop' class=''><h2>"+cattts+""+who+"</h2></div>";
 				numitems = 0;
 				}
-				$('#edwalk').append('<div id="loading" style="text-align:center;">loading <div class="spinner"> <div class="bounce1"></div> <div class="bounce2"></div> <div class="bounce3"></div> </div> </div>'); 
+				$('#edwalk').append('<div id="loading" style="text-align:center;"><div class="loadcontent">loading <div class="spinner"> <div class="bounce1"></div> <div class="bounce2"></div> <div class="bounce3"></div> </div> </div></div>'); 
 				
 				//menuDiv.style.display="none";
 				$("#submenu div").css("display","none");
@@ -336,6 +337,8 @@ var app = {
 			}
 		/////////////////////////////////////////////
 		
+		var lang = this.store.findlang();
+		//console.log('--> lang: '+lang);
 		
 		
 		$.ajax({
@@ -347,7 +350,8 @@ var app = {
 			'cap': 'N1bl1m69',
 			'who': who,
 			'page': page,
-			'cat': cat
+			'cat': cat,
+			'lang': lang
 		},
 		contentType:contentType,  
 		jsonp: "callback",
@@ -373,7 +377,7 @@ var app = {
 				}
 				//$("#edwalk").append(JSON.stringify(response));
 				//obj = JSON && JSON.parse(json) || $.parseJSON(json);
-				$('#loading').append(' success '); 
+				$('#loading .loadcontent').append(' success '); 
 				//$('#edwalk').append("<div id='"+item.ID+"' class='art'>"+who+"who</div>"); 
 				//var d = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
 				
@@ -491,13 +495,18 @@ var app = {
 				
 	},
 	pagination: function(page,numitems,cat) {
+		var lang = this.store.findlang();
+		var obj = {
+			'end' : { 'EN' : 'You reached the end.', 'ES' : 'Has alcanzado el final. ' },
+			'Load' : { 'EN' : 'Load more items', 'ES' : 'Cargar más imágenes' }
+		};
 		var nextpage = perpage*page;
 		var fintext = "";
 		page++;
 		if( numitems < nextpage ){ 
-			fintext = "<span style='color:#ccc;'>You reached the end.</span>" ;
+			fintext = "<span style='color:#ccc;'>"+ obj['end'][lang] +"</span>" ;
 		}else { 
-			fintext = '<a href="javascript:void(0);" onclick="app.onSearchWebEvent(\'art\','+page+','+cat+');">Load more items</a>'; 
+			fintext = '<a href="javascript:void(0);" onclick="app.onSearchWebEvent(\'art\','+page+','+cat+');">'+ obj['Load'][lang] +'</a>'; 
 		}
 		
 		document.getElementById('finale').innerHTML = fintext ;
@@ -507,31 +516,42 @@ var app = {
 		//console.log('cat:'+cat+'perpage:'+perpage+' numitems:'+numitems+' - page:'+page+' - nextpage:'+nextpage+' fintext:'+fintext);
 	},
 	createMenu: function(response) { 
-	//console.log('response.tec'+response.tec); 
+		$.each(response,function(i,item){		
+			$.each(item,function(j,i2tem){ //console.log(i2tem.name);
+				catsNameId[i2tem.name] = i2tem.term_id;
+				catsNameId[i2tem.nameES] = i2tem.term_id;
+			});	
+		});
+		firstArrayMenu = response;
+		app.DrawMenu(response);
+	},
+	DrawMenu: function(response) { 
+	//console.log('response.tec'+JSON.stringify(response.tec)); 
 	//console.log('response.tem'+teto.length);
+		var lang = this.store.findlang();
 		var n1 = response.tec;
 		var n = n1.length;
-		if( n > 7){
+		//if( n > 7){	
+		if( n > 1){
 			$('#tec').html('');
 			$.each(response.tec,function(i,item){
-				$('#tec').append('<li><a href="javascript:void(0)" onclick="app.onSearchWebEvent(\'art\',1,'+item.term_id+',\''+encodeRFC5987ValueChars(item.name)+'\');">'+item.name+'</a></li>');
+				if( lang === 'ES'){ var name = item.nameES;} else { var name = item.name; }
+				$('#tec').append('<li><a href="javascript:void(0)" onclick="app.onSearchWebEvent(\'art\',1,'+item.term_id+',\''+encodeRFC5987ValueChars(name)+'\');">'+name+'</a></li>');
+				//encodeRFC5987ValueChars(name)
 				//catsNameId[item.name] = item.term_id;
 			});
 		}
 		var m1 = response.tem;
 		var m = m1.length;
-		if( m > 7){
+		if( m > 1){
 			$('#tem').html('');
 			$.each(response.tem,function(i,item){
-				$('#tem').append('<li><a href="javascript:void(0)" onclick="app.onSearchWebEvent(\'art\',1,'+item.term_id+',\''+item.name+'\');">'+encodeRFC5987ValueChars(item.name)+'</a></li>');
+				if( lang === 'ES'){ var name = item.nameES;} else { var name = item.name; }
+				$('#tem').append('<li><a href="javascript:void(0)" onclick="app.onSearchWebEvent(\'art\',1,'+item.term_id+',\''+encodeRFC5987ValueChars(name)+'\');">'+name+'</a></li>');
 				//catsNameId[item.name] = item.term_id;
 			});
 		}
-		$.each(response,function(i,item){		
-			$.each(item,function(j,i2tem){ //console.log(i2tem.name);
-				catsNameId[i2tem.name] = i2tem.term_id;
-			});	
-		});	
+			
 		//alert(response.join('\n'));
 		//alert('catsNameId: '+catsNameId.toString());
 		
@@ -540,33 +560,61 @@ var app = {
 		
 	},
 	showSettings: function() {
+		var lang = this.store.findlang();
+		var obj = {
+			'Settings' : { 'EN' : 'Settings', 'ES' : 'Configuración' },
+			'DeleteAll' : { 'EN' : 'Delete all your favorite pictures', 'ES' : 'Borrar todas tus imágenes favoritas' },
+			'selectlang' : { 'EN' : 'Select your language', 'ES' : 'Selecciona tu idioma' }
+		};
+		var langES = '';
+		var langEN = '';
+		if( lang === 'ES'){ langES = ' asettSelect ';} else { langEN = ' asettSelect '; }
+		
 		window.scrollTo(0,0);
 		$('#finale').html("");
 		app.hideExtra();
 		$("#submenu div").css("display","none");
-		edwalk.innerHTML = "<h2 style='text-align:center;padding:20px 0; background:#151515;'><span style='color:#fff;'>edwalk</span> Settings</h2>";
+		edwalk.innerHTML = "<h2 style='text-align:center;padding:20px 0; background:#151515;'><span style='color:#fff;'>edwalk</span> "+ obj['Settings'][lang] +"</h2>";
 		$('#edwalk').append('<div id="about"> \
 		<div class="settings2"> \
-		<a class="asett" href="javascript:void(0)" onclick="navigator.notification.confirm( \'Delete all your favorite pictures\', app.clearFavsConfirm, \'edwalk settings\', [\'Detele\',\'Exit\']  );" >Delete all your favorite pictures <span id="clearfavsresult"></span></a> \
+		<a class="asett" href="javascript:void(0)" onclick="navigator.notification.confirm( \' '+ obj['DeleteAll'][lang] +' \', app.clearFavsConfirm, \'edwalk settings\', [\'Detele\',\'Exit\']  );" >'+ obj['DeleteAll'][lang] +' <span id="clearfavsresult"></span></a> \
+		'+ obj['selectlang'][lang] +': <br/> \
+		<a class="asett '+langES+'" href="javascript:void(0)" onclick="app.changelanguage( \'ES\' );" >Español <span id="ES"></span></a> \
+		<a class="asett '+langEN+'" href="javascript:void(0)" onclick="app.changelanguage( \'EN\' );" >English <span id="EN"></span></a> \
 		</div> \
 		</div>');
 	},
+	changelanguage: function(idioma) {
+		//this.store.xchangelang(idioma);
+		this.store.xchangelang(idioma,function() {
+			app.DrawMenu(firstArrayMenu);
+			app.showSettings();
+		});
+	},
 	showAbout: function() {
+		var lang = this.store.findlang();
+		var obj = {
+			'about' : { 'EN' : 'about', 'ES' : 'Sobre ' },
+			'Portfolio' : { 'EN' : 'Portfolio of Visual Artist', 'ES' : 'Portafolio del Artista Visual' },
+			'Painting' : { 'EN' : 'Painting, Illustration and sketches', 'ES' : 'Pintura, ilustración y bocetos' },
+			'Myname' : { 'EN' : 'My name is Eduard Torrelles, after a long time lost in the immensity. I decided to return to the path of art, this is my diary.', 'ES' : 'Mi nombre es Eduard Torrelles, después de un largo tiempo perdido en la inmensidad. Decidí volver a la senda del arte, este es mi diario.' },
+			'Settings' : { 'EN' : 'Settings', 'ES' : 'Configuración ' }
+		};
 		window.scrollTo(0,0);
 		$('#finale').html("");
 		app.hideExtra();
 		var d = new Date();
 		$("#submenu div").css("display","none");
-		edwalk.innerHTML = "<div id='topedbar'><h2><span style='color:#fff;'>about</span> ed</h2></div><div id='sticky-anchor'></div><div id='istop' class=''><h2><span style='color:#fff;'>about</span> ed</h2></div>";
+		edwalk.innerHTML = "<div id='topedbar'><h2><span style='color:#fff;'>"+ obj['about'][lang] +"</span> ed</h2></div><div id='sticky-anchor'></div><div id='istop' class=''><h2><span style='color:#fff;'>"+ obj['about'][lang] +"</span> ed</h2></div>";
 		$('#edwalk').append('<div id="about"> \
-		<div class="targeta"><img class="aboutlogo" src="img/woki22.png" alt="edwalk" /></div> <h2>Portfolio of Visual Artist</h2> \
+		<div class="targeta"><img class="aboutlogo" src="img/woki22.png" alt="edwalk" /></div> <h2>'+ obj['Portfolio'][lang] +'</h2> \
 		<h3>Painting, Illustration and sketches</h3> \
-		<p>My name is Eduard Torrelles, after a long time lost in the immensity. I decided to return to the path of art, this is my diary.</p> \
+		<p>'+ obj['Myname'][lang] +'</p> \
 		Bacelona, Spain \
 		<p><a href="javascript:void(0)" onclick="window.open(\'http://edwalk.com\', \'_system\');" >edwalk.com</a></p>		\
 		All images © 2000 - '+d.getFullYear()+' Eduard Torrelles  \
 		<div class="settings"> \
-		<a  href="javascript:void(0)" onclick="app.showSettings();" >Settings<br/><img src="img/settings.png" alt="settings"></a> \
+		<a  href="javascript:void(0)" onclick="app.showSettings();" >'+ obj['Settings'][lang] +'<br/><img src="img/settings.png" alt="settings"></a> \
 		</div> \
 		</div>');
 	},
@@ -582,7 +630,14 @@ var app = {
 	},
 	showFavs: function() {
 		//console.log('showFavs');
-		edwalk.innerHTML = "<h2 style='text-align:center;padding:20px 0; background:#151515;'><span style='color:#fff;'>I like this</span> ART</h2>";
+		var lang = this.store.findlang(); 
+		var obj = {
+			'likethis' : { 'EN' : 'I like this', 'ES' : 'Me gusta tu ' },
+			'ART' : { 'EN' : 'ART', 'ES' : 'ARTE' },
+			'willbe' : { 'EN' : 'Your favorites will be here', 'ES' : 'Tus favoritos estarán aquí' }
+		};
+		
+		edwalk.innerHTML = "<h2 style='text-align:center;padding:20px 0; background:#151515;'><span style='color:#fff;'>"+ obj['likethis'][lang] +"</span> "+ obj['ART'][lang] +"</h2>";
 		window.scrollTo(0,0);
 		$('#finale').html("");
 		app.hideExtra();
@@ -594,7 +649,7 @@ var app = {
 			//console.log('favs.length: '+  JSON.stringify(favs));
             //$('.employee-list').empty();
 			if( l < 1){ 
-				$('#edwalk').append(" <h3 style='text-align:center;padding:20px 0; '> Your favorites will be here </h3>");
+				$('#edwalk').append(" <h3 style='text-align:center;padding:20px 0; '>"+ obj['willbe'][lang] +" </h3>");
 			}else{
 				
 	/*			for(var index in favs) { 

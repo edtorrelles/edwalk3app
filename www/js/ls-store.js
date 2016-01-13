@@ -21,6 +21,20 @@ var LocalStorageStore = function(successCallback, errorCallback) {
         }
         callLater(callback, employee);
     }
+	this.findlang = function() { 
+		var lang = window.localStorage.getItem("lang");
+		if (typeof lang === 'undefined' || lang === null ) { 
+			window.localStorage.setItem("lang", "EN");
+			lang = 'EN';
+		}
+		return lang;
+		
+	}
+	this.xchangelang = function(idioma,callback) { 
+		if(idioma !== 'ES'){ idioma = 'EN';}
+		window.localStorage.setItem("lang", idioma);	
+		callback();
+	}
 	this.findAll = function(callback) { //ED
 		var teto = window.localStorage.getItem("favs");
 		if (typeof teto === 'undefined' || teto === null ) { //alert('a11111 '+teto);
