@@ -333,6 +333,7 @@ var app = {
 				//$("#prehome").fadeIn();
 				//$("#edwalk").fadeOut();
                         //$("#resultado").html("Procesando, espere por favor...");
+			}
 		/////////////////////////////////////////////
 		
 		
@@ -354,7 +355,7 @@ var app = {
 		dataType: 'json',
 		beforeSend: function () {
 			
-			}
+			
                 },
 		complete: function() {
 			
