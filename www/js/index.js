@@ -307,23 +307,10 @@ var app = {
 		$('#edwalk').append('<div id="loading">loading <div class="spinner"> <div class="bounce1"></div> <div class="bounce2"></div> <div class="bounce3"></div> </div> </div>'); 
 		*/
 		//console.log(JSON.stringify(favsID) + '' + favsID);
-		$.ajax({
-			type: 'GET',
-		url: 'http://edwalk.com/app/',
-		async: false,
-		crossDomain: true,
-		 data : {   
-			'cap': 'N1bl1m69',
-			'who': who,
-			'page': page,
-			'cat': cat
-		},
-		contentType:contentType,  
-		jsonp: "callback",
-		jsonpCallback: 'jsonpCallback',
-		dataType: 'json',
-		beforeSend: function () {
-			if(who!=='like'){
+		
+		
+		//////////////////beforesend//////////////////
+		if(who!=='like'){
 				app.hideExtra();
 				var cattts ="";
 				var lologo ="";
@@ -346,6 +333,27 @@ var app = {
 				//$("#prehome").fadeIn();
 				//$("#edwalk").fadeOut();
                         //$("#resultado").html("Procesando, espere por favor...");
+		/////////////////////////////////////////////
+		
+		
+		
+		$.ajax({
+			type: 'GET',
+		url: 'http://edwalk.com/app/',
+		async: false,
+		crossDomain: true,
+		 data : {   
+			'cap': 'N1bl1m69',
+			'who': who,
+			'page': page,
+			'cat': cat
+		},
+		contentType:contentType,  
+		jsonp: "callback",
+		jsonpCallback: 'jsonpCallback',
+		dataType: 'json',
+		beforeSend: function () {
+			
 			}
                 },
 		complete: function() {
