@@ -540,7 +540,7 @@ var app = {
 			$('#tec').html('');
 			$.each(response.tec,function(i,item){
 				if( lang === 'ES'){ var name = item.nameES;} else { var name = item.name; }
-				$('#tec').append('<li><a href="javascript:void(0)" onclick="app.onSearchWebEvent(\'art\',1,'+item.term_id+',\''+encodeRFC5987ValueChars(name)+'\');">'+decodeURIComponent(encodeRFC5987ValueChars(name))+'</a></li>');
+				$('#tec').append('<li><a href="javascript:void(0)" onclick="app.onSearchWebEvent(\'art\',1,'+item.term_id+',\''+encodeRFC5987ValueChars(name)+'\');">'+name+'</a></li>');
 				//encodeRFC5987ValueChars(name)
 				//catsNameId[item.name] = item.term_id;
 			});
@@ -551,7 +551,7 @@ var app = {
 			$('#tem').html('');
 			$.each(response.tem,function(i,item){
 				if( lang === 'ES'){ var name = item.nameES;} else { var name = item.name; }
-				$('#tem').append('<li><a href="javascript:void(0)" onclick="app.onSearchWebEvent(\'art\',1,'+item.term_id+',\''+encodeRFC5987ValueChars(name)+'\');">'+decodeURIComponent(encodeRFC5987ValueChars(name))+'</a></li>');
+				$('#tem').append('<li><a href="javascript:void(0)" onclick="app.onSearchWebEvent(\'art\',1,'+item.term_id+',\''+encodeRFC5987ValueChars(name)+'\');">'+decodeURIComponent(name)+'</a></li>');
 				//catsNameId[item.name] = item.term_id;
 			});
 		}
