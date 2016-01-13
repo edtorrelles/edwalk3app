@@ -289,7 +289,7 @@ var app = {
 		
 		$('#prehome').delay(1000).addClass("tozero").delay(1000).remove();
 		
-		navigator.splashscreen.hide();
+		//navigator.splashscreen.hide();
 		/*
 		$('#prehome').one("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend",
 							  function(event) {
