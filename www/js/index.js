@@ -275,12 +275,17 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
+		
+		/*
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
 
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
+		$('#prehome').delay(1000).addClass("tozero").delay(1000).remove();
+		*/
+		
 		//var lalalaElement = document.getElementById('lalala');
 		//lalalaElement.innerHTML = "xxxxxxxxxxx";
         //console.log('Received Event: ' + id);
@@ -288,7 +293,7 @@ var app = {
 		
 		app.onSearchWebEvent('art',1);
 		
-		$('#prehome').delay(1000).addClass("tozero").delay(1000).remove();
+		
 		
 		//navigator.splashscreen.hide();
 		/*
@@ -312,7 +317,7 @@ var app = {
 		
 		//////////////////beforesend//////////////////
 		if(who!=='like'){
-				$('body').append('<div id="loading" style="text-align:center;"><div class="loadcontent">loading <div class="spinner"> <div class="bounce1"></div> <div class="bounce2"></div> <div class="bounce3"></div> </div> </div></div>');
+				$('body').append('<div id="loading" style="text-align:center;"><div class="loadcontent"><img src="img/logo.png" alt="edwalk" /><br/>loading <div class="spinner"> <div class="bounce1"></div> <div class="bounce2"></div> <div class="bounce3"></div> </div> </div></div>');
 				app.hideExtra();
 				var cattts ="";
 				var lologo ="";
@@ -540,7 +545,7 @@ var app = {
 			$('#tec').html('');
 			$.each(response.tec,function(i,item){
 				if( lang === 'ES'){ var name = item.nameES;} else { var name = item.name; } 
-				$('#tec').append('<li><a href="javascript:void(0)" onclick="app.onSearchWebEvent(\'art\',1,'+item.term_id+',\''+encodeRFC5987ValueChars(name)+'\');">'+decodeURIComponent(escape(name))+'</a></li>');
+				$('#tec').append('<li><a href="javascript:void(0)" onclick="app.onSearchWebEvent(\'art\',1,'+item.term_id+',\''+decodeURIComponent(escape(name))+'\');">'+decodeURIComponent(escape(name))+'</a></li>');
 				//encodeRFC5987ValueChars(name)
 				//catsNameId[item.name] = item.term_id;
 			});
@@ -551,7 +556,7 @@ var app = {
 			$('#tem').html('');
 			$.each(response.tem,function(i,item){
 				if( lang === 'ES'){ var name = item.nameES;} else { var name = item.name; }
-				$('#tem').append('<li><a href="javascript:void(0)" onclick="app.onSearchWebEvent(\'art\',1,'+item.term_id+',\''+encodeRFC5987ValueChars(name)+'\');">'+decodeURIComponent(escape(name))+'</a></li>');
+				$('#tem').append('<li><a href="javascript:void(0)" onclick="app.onSearchWebEvent(\'art\',1,'+item.term_id+',\''+decodeURIComponent(escape(name))+'\');">'+decodeURIComponent(escape(name))+'</a></li>');
 				//catsNameId[item.name] = item.term_id;
 			});
 		}
