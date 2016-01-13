@@ -148,6 +148,7 @@ a{text-decoration:none; color:orange;}
 .camera.is-broken img.foto {
   opacity: 0;
 }
+#loading {display:block; width:100%; background:rgba(0,0,0,0.8); position:fixed; top:40%; left:0px; z-index: 999; font-size:200%}
 #extraimg{  width:500px; display:block;  /*float:left; */}
 #extracontent{ position:fixed; top:0;   width:calc(100% - 540px); display:block; margin-right:20px;}
 #extitle, #exsize, #excats , #eximg , #exnexprev{margin-left:30px; }

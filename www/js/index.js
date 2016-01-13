@@ -307,7 +307,7 @@ var app = {
 		$('#edwalk').append('<div id="loading">loading <div class="spinner"> <div class="bounce1"></div> <div class="bounce2"></div> <div class="bounce3"></div> </div> </div>'); 
 		*/
 		//console.log(JSON.stringify(favsID) + '' + favsID);
-		navigator.splashscreen.show();
+		//navigator.splashscreen.show();
 		
 		//////////////////beforesend//////////////////
 		if(who!=='like'){
@@ -360,7 +360,7 @@ var app = {
 		complete: function() {
 			
 			//$.mobile.loading('hide')
-			$('#loading').remove();
+			//$('#loading').remove();
 			//$("#prehome").fadeOut(function(){$("#edwalk").fadeIn();});
 			},
 			// Work with the response
@@ -434,7 +434,11 @@ var app = {
 				//$("#edwalk").append('ok: ' + JSON.stringify(response));
 				//console.log( response ); // server response
 			}
-			navigator.splashscreen.hide();
+			//navigator.splashscreen.hide();
+			setTimeout(function() {
+			  $('#loading').remove();
+			}, 2000);
+			
 		},
 		error: function(e) {
 				console.log( 'error' );
