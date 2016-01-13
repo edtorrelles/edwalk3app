@@ -307,7 +307,7 @@ var app = {
 		$('#edwalk').append('<div id="loading">loading <div class="spinner"> <div class="bounce1"></div> <div class="bounce2"></div> <div class="bounce3"></div> </div> </div>'); 
 		*/
 		//console.log(JSON.stringify(favsID) + '' + favsID);
-		
+		navigator.splashscreen.show();
 		
 		//////////////////beforesend//////////////////
 		if(who!=='like'){
@@ -367,7 +367,7 @@ var app = {
 		success: function( response ) {
 			if(who!=="like"){
 					
-				
+				navigator.splashscreen.hide();
 				if(page == 1){
 					window.scrollTo(0,0);
 				}
@@ -437,7 +437,7 @@ var app = {
 		},
 		error: function(e) {
 				console.log( 'error' );
-				$("#edwalk").append('error');
+				$("#edwalk").append('<h1>error loading content</h1>');
 			   console.log(e.message);
 			   //this.onSearchWebEvent('image');
 			   //this.onSearchWebEvent('post');
