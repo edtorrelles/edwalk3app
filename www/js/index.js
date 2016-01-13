@@ -325,7 +325,7 @@ var app = {
 				edwalk.innerHTML = "<div id='topedbar'><h2>"+lologo+""+cattts+""+who+"</h2></div><div id='sticky-anchor'></div><div id='istop' class=''><h2>"+cattts+""+who+"</h2></div>";
 				numitems = 0;
 				}
-				$('#edwalk').append('<div id="loading" style="text-align:center;"><div class="loadcontent">loading <div class="spinner"> <div class="bounce1"></div> <div class="bounce2"></div> <div class="bounce3"></div> </div> </div></div>'); 
+				$('body').append('<div id="loading" style="text-align:center;"><div class="loadcontent">loading <div class="spinner"> <div class="bounce1"></div> <div class="bounce2"></div> <div class="bounce3"></div> </div> </div></div>'); 
 				
 				//menuDiv.style.display="none";
 				$("#submenu div").css("display","none");
@@ -451,6 +451,9 @@ var app = {
 			   navigator.splashscreen.hide();
 			   //this.onSearchWebEvent('image');
 			   //this.onSearchWebEvent('post');
+			   setTimeout(function() {
+				  $('#loading').remove();
+				}, 2000);
 			}
 		});
 
