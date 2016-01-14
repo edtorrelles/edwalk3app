@@ -317,7 +317,7 @@ var app = {
 		*/
 		//console.log(JSON.stringify(favsID) + '' + favsID);
 		//navigator.splashscreen.show();
-		window.analytics.trackView('Screen Title')
+		//window.analytics.trackView('Screen Title')
 		//////////////////beforesend//////////////////
 		if(who!=='like'){
 				$('body').append('<div id="loading" style="text-align:center;"><div class="loadcontent"><img src="img/logo.png" alt="edwalk" /><br/>loading <div class="spinner"> <div class="bounce1"></div> <div class="bounce2"></div> <div class="bounce3"></div> </div> </div></div>');
@@ -325,8 +325,9 @@ var app = {
 				var cattts ="";
 				var lologo ="";
 				if(page === 1){
-					window.analytics.trackView('app '+decodeURIComponent(catname));
+					
 				if (typeof catname != 'undefined') { cattts ="<span style='color:#fff;'>"+decodeURIComponent(catname)+" </span>"; 
+				window.analytics.trackView('app cat: '+decodeURIComponent(catname));
 				/*window.analytics.trackView(decodeURIComponent(catname)); */
 				} else { 
 				window.analytics.trackView('app home');
@@ -574,7 +575,7 @@ var app = {
 		
 	},
 	showSettings: function() {
-		window.analytics.trackView('app settings');
+		
 		var lang = this.store.findlang();
 		var obj = {
 			'Settings' : { 'EN' : 'Settings', 'ES' : 'Configuración' },
@@ -598,6 +599,7 @@ var app = {
 		<a class="asett '+langEN+'" href="javascript:void(0)" onclick="app.changelanguage( \'EN\' );" >English <span id="EN"></span></a> \
 		</div> \
 		</div>');
+		window.analytics.trackView('app settings');
 	},
 	changelanguage: function(idioma) {
 		//this.store.xchangelang(idioma);
@@ -607,7 +609,7 @@ var app = {
 		});
 	},
 	showAbout: function() {
-		window.analytics.trackView('app about');
+		
 		var lang = this.store.findlang();
 		var obj = {
 			'about' : { 'EN' : 'about', 'ES' : 'Sobre ' },
@@ -633,6 +635,7 @@ var app = {
 		<a  href="javascript:void(0)" onclick="app.showSettings();" >'+ obj['Settings'][lang] +'<br/><img src="img/settings.png" alt="settings"></a> \
 		</div> \
 		</div>');
+		window.analytics.trackView('app about');
 	},
 	clearFavsConfirm: function(buttonIndex) {	// log('<br/><br/><br/>'+buttonIndex);
 		if(buttonIndex === 1){// log('<br/><br/><br/>buttonIndex '+buttonIndex);
@@ -646,7 +649,7 @@ var app = {
 	},
 	showFavs: function() {
 		//console.log('showFavs');
-		window.analytics.trackView('app show favs');
+		
 		var lang = this.store.findlang(); 
 		var obj = {
 			'likethis' : { 'EN' : 'I like this', 'ES' : 'Me gusta tu ' },
@@ -753,6 +756,8 @@ for (var i=0; i<l; i++) {
 				  });
 			}
         });
+	
+	window.analytics.trackView('app show favs');
 	
 	},
 	addFavs: function(id) {
