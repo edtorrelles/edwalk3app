@@ -319,7 +319,7 @@ var app = {
 		//navigator.splashscreen.show();
 		//window.analytics.trackView('Screen Title')
 		//////////////////beforesend//////////////////
-		if(who!=='like'){
+		if(who!=='like' && who!=="contruct"){
 			if ($('#loading').length ) {}else{
 				$('body').append('<div id="loading" style="text-align:center;"><div class="loadcontent"><img src="img/logo.png" alt="edwalk" /><br/>loading <div class="spinner"> <div class="bounce1"></div> <div class="bounce2"></div> <div class="bounce3"></div> </div> </div></div>');
 			}
