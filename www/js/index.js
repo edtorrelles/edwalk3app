@@ -485,14 +485,14 @@ var app = {
 						if(j > 0){ catss += ", ";}
 						//catss += xats.name;
 						catss +='<a href="javascript:void(0)" onclick="app.hideExtra('+item.id+'); app.onSearchWebEvent(\'art\',1,'+xats.term_id+',\''+encodeRFC5987ValueChars(xats.name)+'\'); ">'+xats.name+'</a>';
-						text2 += ' '+encodeRFC5987ValueChars(xats.name)+' ';
+						text2 += ' #'+encodeRFC5987ValueChars(xats.name)+' , ';
 					});
 					var t = item.idate.split(/[- :]/);
 					var url = 'http://edwalk.com/uploads/'+t[0]+'/'+t[1]+'/i5-'+item.thumb_image;
 					var ssize = "";
 					if(typeof item.size != 'undefined'){ ssize = "<div class='artsize'>"+item.size+"</div>";}
 					var artfav = '';
-					artfav += '<a class="share" href="javascript:void(0)" onclick="window.plugins.socialsharing.share(\'edwalk art<br/> <strong>'+item.title+'</strong> <br/>( '+text2+' ) <br/>\', \'edwalk art\', \''+url+'\', \'http://edwalk.com\')"><img src="img/share.png" alt="share" /></a>';
+					artfav += '<a class="share" href="javascript:void(0)" onclick="window.plugins.socialsharing.share(\'edwalk art: '+item.title+' ( '+text2+' )  \', \'edwalk art\', \''+url+'\', \'http://edwalk.com\')"><img src="img/share.png" alt="share" /></a>';
 					if(fav === true){ var imglove = "img/fav7.png";}else{ var imglove = "img/fav2.png";}
 					if(favsID.indexOf(item.id) != -1){ artfav += "<a class='loveicon' href='javascript:void(0)' onclick='app.removeFavs("+item.id+");'><img src='"+imglove+"' alt='favs' /></a>"; }else{ artfav += "<a class='loveicon' href='javascript:void(0)' onclick='app.addFavs("+item.id+");'><img src='img/fav1.png' alt='favs' /></a>"; }
 					//console.log(JSON.stringify(item));
@@ -642,7 +642,7 @@ var app = {
 		All images © 2000 - '+d.getFullYear()+' Eduard Torrelles  \
 		<div class="settings"> \
 		<a  href="javascript:void(0)" onclick="app.showSettings();" >'+ obj['Settings'][lang] +'<br/><img src="img/settings.png" alt="settings"></a> \
-		<a class="share" href="javascript:void(0)" onclick="window.plugins.socialsharing.share(\' <strong>edwalk art</strong> Portfolio of Visual Artist ed Torrelles - Painting, Illustration and sketches \', \'edwalk art\', \'null\', \'http://edwalk.com\')"><img src="img/share.png" alt="share" /></a> \
+		<a class="share" href="javascript:void(0)" onclick="window.plugins.socialsharing.share(\' edwalk art -  Portfolio of Visual Artist ed Torrelles - Painting, Illustration and sketches \', \'edwalk art\', \'null\', \'http://edwalk.com\')"><img src="img/share.png" alt="share" /></a> \
 		</div> \
 		</div>');
 		window.analytics.trackView('app about');
@@ -891,7 +891,7 @@ for (var i=0; i<l; i++) {
 		$.each(item.lascats,function(j,xats){
 			//if(j > 0){ text1 += ", ";}
 			text1 +='<a href="javascript:void(0)" onclick="app.hideExtra('+item.id+'); app.onSearchWebEvent(\'art\',1,'+xats.term_id+',\''+encodeRFC5987ValueChars(xats.name)+'\'); ">'+xats.name+'</a>';
-			text2 += ' '+encodeRFC5987ValueChars(xats.name)+' ';
+			text2 += ' #'+encodeRFC5987ValueChars(xats.name)+' , ';
 		});
 		
 		$("#flipcontent2").html('<div id="extraimg"> <div id="eximg"></div> <div id="exfoot"></div> </div> <div id="extracontent" class=" '+extraclass+'" > <div id="return">  <a href="javascript:void(0)" onclick="app.hideExtra();" title="close"><img src="img/close.png" alt="close"></a>  </div> <div id="extitle"></div> <div id="excats"></div> <div id="exsize"></div>  <div id="exnexprev"></div> <div id="exfoot"></div> </div>'); 
@@ -903,7 +903,7 @@ for (var i=0; i<l; i++) {
 		var actual = $('#'+item.id+' .loveicon img').attr("src");
 		if( actual === "img/fav7.png"){ var imglove = "img/fav7.png";}else{ var imglove = "img/fav2.png";}
 		
-		artfav += '<a class="share" href="javascript:void(0)" onclick="window.plugins.socialsharing.share(\'edwalk art<br/> <strong>'+item.title+'</strong> <br/>( '+text2+' ) <br/>\', \'edwalk art\', \''+url+'\', \'http://edwalk.com\')"><img src="img/share.png" alt="share" /></a> ';
+		artfav += '<a class="share" href="javascript:void(0)" onclick="window.plugins.socialsharing.share(\'edwalk art: '+item.title+'( '+text2+' )  \', \'edwalk art\', \''+url+'\', \'http://edwalk.com\')"><img src="img/share.png" alt="share" /></a> ';
 		
 		if(favsID.indexOf(item.id) != -1){ artfav += "<a class='loveicon' href='javascript:void(0)' onclick='app.removeFavs("+item.id+");'><img src='"+imglove+"' alt='favs' /></a>"}else{ artfav += "<a class='loveicon' href='javascript:void(0)' onclick='app.addFavs("+item.id+");'><img src='img/fav1.png' alt='favs' /></a>" }
 		
