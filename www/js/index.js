@@ -326,12 +326,13 @@ var app = {
 				var lologo ="";
 				if(page === 1){
 					
-				if (typeof catname != 'undefined') { cattts ="<span style='color:#fff;'>"+decodeURIComponent(catname)+" </span>"; 
-				window.analytics.trackView('app cat: '+decodeURIComponent(catname));
+				if (typeof catname != 'undefined') { 
+					cattts ="<span style='color:#fff;'>"+decodeURIComponent(catname)+" </span>"; 
+					window.analytics.trackView('app cat: '+decodeURIComponent(catname));
 				/*window.analytics.trackView(decodeURIComponent(catname)); */
 				} else { 
-				window.analytics.trackView('app home');
-				cattts ="<span>edwalk </span>"; lologo = "<img src='img/woki22.png' alt='edwalk' /><br/>"; 
+					window.analytics.trackView('app home');
+					cattts ="<span>edwalk </span>"; lologo = "<img src='img/woki22.png' alt='edwalk' /><br/>"; 
 				/*window.analytics.trackView('edwalk home');*/ 
 				}
 				edwalk.innerHTML = "<div id='topedbar'><h2>"+lologo+""+cattts+""+who+"</h2></div><div id='sticky-anchor'></div><div id='istop' class=''><h2>"+cattts+""+who+"</h2></div>";
@@ -449,11 +450,13 @@ var app = {
 				  });
 				//$("#edwalk").append('ok: ' + JSON.stringify(response));
 				//console.log( response ); // server response
+				setTimeout(function() {
+				  $('#loading').remove();
+				}, 2000);
+				alert('se fini');
 			}
 			//navigator.splashscreen.hide();
-			setTimeout(function() {
-			  $('#loading').remove();
-			}, 2000);
+			
 			
 		},
 		error: function(e) {
