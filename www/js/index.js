@@ -457,10 +457,10 @@ var app = {
 			
 		},
 		error: function(e) {
-				console.log( 'error' );
+				//console.log( 'error' );
 				$("#edwalk").append('<h1>error loading content</h1>');
-			   console.log(e.message);
-			   navigator.splashscreen.hide();
+			   //console.log(e.message);
+			   //navigator.splashscreen.hide();
 			   //this.onSearchWebEvent('image');
 			   //this.onSearchWebEvent('post');
 			   setTimeout(function() {
