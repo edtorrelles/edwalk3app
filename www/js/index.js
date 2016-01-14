@@ -492,7 +492,7 @@ var app = {
 					var ssize = "";
 					if(typeof item.size != 'undefined'){ ssize = "<div class='artsize'>"+item.size+"</div>";}
 					var artfav = '';
-					artfav += '<a class="share" href="javascript:void(0)" onclick="window.plugins.socialsharing.share(\'edwalk art: '+item.title+' ( '+text2+' )  \', \'edwalk art\', \''+url+'\', \'http://edwalk.com\')"><img src="img/share.png" alt="share" /></a>';
+					artfav += '<a class="share" href="javascript:void(0)" onclick="window.plugins.socialsharing.share(\'edwalk art: '+item.title+' ( '+decodeURIComponent(text2)+' )  \', \'edwalk art\', \''+url+'\', \'http://edwalk.com\')"><img src="img/share.png" alt="share" /></a>';
 					if(fav === true){ var imglove = "img/fav7.png";}else{ var imglove = "img/fav2.png";}
 					if(favsID.indexOf(item.id) != -1){ artfav += "<a class='loveicon' href='javascript:void(0)' onclick='app.removeFavs("+item.id+");'><img src='"+imglove+"' alt='favs' /></a>"; }else{ artfav += "<a class='loveicon' href='javascript:void(0)' onclick='app.addFavs("+item.id+");'><img src='img/fav1.png' alt='favs' /></a>"; }
 					//console.log(JSON.stringify(item));
@@ -903,7 +903,7 @@ for (var i=0; i<l; i++) {
 		var actual = $('#'+item.id+' .loveicon img').attr("src");
 		if( actual === "img/fav7.png"){ var imglove = "img/fav7.png";}else{ var imglove = "img/fav2.png";}
 		
-		artfav += '<a class="share" href="javascript:void(0)" onclick="window.plugins.socialsharing.share(\'edwalk art: '+item.title+'( '+text2+' )  \', \'edwalk art\', \''+url+'\', \'http://edwalk.com\')"><img src="img/share.png" alt="share" /></a> ';
+		artfav += '<a class="share" href="javascript:void(0)" onclick="window.plugins.socialsharing.share(\'edwalk art: '+item.title+'( '+decodeURIComponent(text2)+' )  \', \'edwalk art\', \''+url+'\', \'http://edwalk.com\')"><img src="img/share.png" alt="share" /></a> ';
 		
 		if(favsID.indexOf(item.id) != -1){ artfav += "<a class='loveicon' href='javascript:void(0)' onclick='app.removeFavs("+item.id+");'><img src='"+imglove+"' alt='favs' /></a>"}else{ artfav += "<a class='loveicon' href='javascript:void(0)' onclick='app.addFavs("+item.id+");'><img src='img/fav1.png' alt='favs' /></a>" }
 		
