@@ -862,11 +862,11 @@ for (var i=0; i<l; i++) {
    */
 		
 		
-		$("#flipcontent2").html('<div id="extraimg"> <div id="eximg"></div> <div id="exfoot"></div> </div> <div id="extracontent" class=" '+extraclass+'" > <div id="return"> <a href="javascript:void(0)" onclick="app.hideExtra();" title="close"><img src="img/close.png" alt="close"></a>  </div> <div id="extitle"></div> <div id="excats"></div> <div id="exsize"></div>  <div id="exnexprev"></div> <div id="exfoot"></div> </div>'); 
+		$("#flipcontent2").html('<div id="extraimg"> <div id="eximg"></div> <div id="exfoot"></div> </div> <div id="extracontent" class=" '+extraclass+'" > <div id="return">  <a href="javascript:void(0)" onclick="app.hideExtra();" title="close"><img src="img/close.png" alt="close"></a>  </div> <div id="extitle"></div> <div id="excats"></div> <div id="exsize"></div>  <div id="exnexprev"></div> <div id="exfoot"></div> </div>'); 
 		
 		
 		$("#flipcontent2 #exnexprev").html('<a id="prev" laid="'+item.id+'" href="javascript:void(0)" onclick="app.prevExtra('+item.id+');" title="prev"><img src="img/prev.png" alt="prev"></a><a id="next" laid="'+item.id+'" href="javascript:void(0)" onclick="app.nextExtra('+item.id+');" title="next"><img src="img/next.png" alt="next"></a>');
-		$("#flipcontent2 #return").html('<a class="hideextra" href="javascript:void(0)" onclick="app.hideExtra('+item.id+');" title="close"><img src="img/close.png" alt="close"></a> ');
+		$("#flipcontent2 #return").html(' <a class="hideextra" href="javascript:void(0)" onclick="app.hideExtra('+item.id+');" title="close"><img src="img/close.png" alt="close"></a> ');
 		var artfav ="";
 		var actual = $('#'+item.id+' .loveicon img').attr("src");
 		if( actual === "img/fav7.png"){ var imglove = "img/fav7.png";}else{ var imglove = "img/fav2.png";}
