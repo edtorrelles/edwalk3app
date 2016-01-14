@@ -633,6 +633,7 @@ var app = {
 		All images © 2000 - '+d.getFullYear()+' Eduard Torrelles  \
 		<div class="settings"> \
 		<a  href="javascript:void(0)" onclick="app.showSettings();" >'+ obj['Settings'][lang] +'<br/><img src="img/settings.png" alt="settings"></a> \
+		<button onclick="window.plugins.socialsharing.share(\'Message only\')">message only</button> \
 		</div> \
 		</div>');
 		window.analytics.trackView('app about');

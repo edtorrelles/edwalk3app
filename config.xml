@@ -30,7 +30,6 @@
   <preference name="android-minSdkVersion" value="14"/>
   <preference name="android-installLocation" value="auto"/>
 
-<plugin name="com.danielcwilson.plugins.googleanalytics" source="pgb" spec="n/a" />
 <plugin name="com.phonegap.plugin.statusbar" source="pgb" spec="n/a" />
 <plugin name="cordova-plugin-whitelist" spec="1.2.0" />
 <plugin name="org.apache.cordova.console" source="pgb" spec="n/a" />
@@ -42,7 +41,6 @@
 <plugin name="org.apache.cordova.network-information" source="pgb" spec="0.2.15" />
 <plugin name="org.apache.cordova.splashscreen" source="pgb" spec="1.0.0" />
 
-
   
 
 <!--   <gap:plugin name="com.phonegap.plugin.statusbar" version="~1.1.0" />
@@ -53,10 +51,14 @@
         <preference name="StatusBarBackgroundColor" value="#151515" />
         <preference name="StatusBarStyle" value="lightcontent" />
 
-
+ <plugin name="com.danielcwilson.plugins.googleanalytics" spec="0.6.1" source="pgb" />
+ <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
 <!--  <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
    <gap:plugin name="nl.x-services.plugins.socialsharing" version="4.3.8" />
   <gap:plugin name="cordova-plugin-actionsheet" source="npm" /> -->
+  
+  
+  
   <icon src="icon.png"/>
   <icon src="www/res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
   <icon src="www/res/icon/android/icon-48-mdpi.png" gap:platform="android" gap:qualifier="mdpi"/>
