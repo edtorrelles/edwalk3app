@@ -642,7 +642,7 @@ var app = {
 		All images © 2000 - '+d.getFullYear()+' Eduard Torrelles  \
 		<div class="settings"> \
 		<a  href="javascript:void(0)" onclick="app.showSettings();" >'+ obj['Settings'][lang] +'<br/><img src="img/settings.png" alt="settings"></a> \
-		<a class="share" href="javascript:void(0)" onclick="window.plugins.socialsharing.share(\' edwalk art -  Portfolio of Visual Artist ed Torrelles - Painting, Illustration and sketches \', \'edwalk art\', \'null\', \'http://edwalk.com\')"><img src="img/share.png" alt="share" /></a> \
+		<a class="share" href="javascript:void(0)" onclick="window.plugins.socialsharing.share(\' edwalk art -  Portfolio of Visual Artist ed Torrelles - Painting, Illustration and sketches \', \'edwalk art\', \'www/img/logo.png\', \'http://edwalk.com\')"><img src="img/share.png" alt="share" /></a> \
 		</div> \
 		</div>');
 		window.analytics.trackView('app about');
