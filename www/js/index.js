@@ -250,7 +250,10 @@ var app = {
         app.receivedEvent('deviceready');
 		
 		document.addEventListener("menubutton", doMenu, false);
-		/*window.analytics.startTrackerWithId('UA-71798739-1');*/
+		
+		
+		window.analytics.startTrackerWithId('UA-71798739-1');
+		
 		//var el = document.getElementById("#flipcontent");
 		//  el.addEventListener("touchstart", handleStart, false);
 		//  el.addEventListener("touchend", handleEnd, false);
@@ -314,7 +317,7 @@ var app = {
 		*/
 		//console.log(JSON.stringify(favsID) + '' + favsID);
 		//navigator.splashscreen.show();
-		
+		window.analytics.trackView('Screen Title')
 		//////////////////beforesend//////////////////
 		if(who!=='like'){
 				$('body').append('<div id="loading" style="text-align:center;"><div class="loadcontent"><img src="img/logo.png" alt="edwalk" /><br/>loading <div class="spinner"> <div class="bounce1"></div> <div class="bounce2"></div> <div class="bounce3"></div> </div> </div></div>');
@@ -322,9 +325,11 @@ var app = {
 				var cattts ="";
 				var lologo ="";
 				if(page === 1){
+					window.analytics.trackView('app '+decodeURIComponent(catname));
 				if (typeof catname != 'undefined') { cattts ="<span style='color:#fff;'>"+decodeURIComponent(catname)+" </span>"; 
 				/*window.analytics.trackView(decodeURIComponent(catname)); */
 				} else { 
+				window.analytics.trackView('app home');
 				cattts ="<span>edwalk </span>"; lologo = "<img src='img/woki22.png' alt='edwalk' /><br/>"; 
 				/*window.analytics.trackView('edwalk home');*/ 
 				}
@@ -569,6 +574,7 @@ var app = {
 		
 	},
 	showSettings: function() {
+		window.analytics.trackView('app settings');
 		var lang = this.store.findlang();
 		var obj = {
 			'Settings' : { 'EN' : 'Settings', 'ES' : 'Configuración' },
@@ -601,6 +607,7 @@ var app = {
 		});
 	},
 	showAbout: function() {
+		window.analytics.trackView('app about');
 		var lang = this.store.findlang();
 		var obj = {
 			'about' : { 'EN' : 'about', 'ES' : 'Sobre ' },
@@ -639,6 +646,7 @@ var app = {
 	},
 	showFavs: function() {
 		//console.log('showFavs');
+		window.analytics.trackView('app show favs');
 		var lang = this.store.findlang(); 
 		var obj = {
 			'likethis' : { 'EN' : 'I like this', 'ES' : 'Me gusta tu ' },
@@ -841,7 +849,7 @@ for (var i=0; i<l; i++) {
 		}
 	},
 	showExtra: function(extra,side) { //console.log('catsNameId: '+JSON.stringify(catsNameId));
-
+		
 		item = JSON.parse(decodeURIComponent(extra));
 		//console.log(item);
 		if (typeof(side)==='undefined'){ side = 'prev'; } 
@@ -934,6 +942,6 @@ for (var i=0; i<l; i++) {
 		$('#flipcontent').animate({
 			scrollTop: 0
 		}, 500);*/
-		
+		window.analytics.trackView('app popup: '+item.title);
 	}
 };
