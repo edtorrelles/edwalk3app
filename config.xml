@@ -52,7 +52,8 @@
         <preference name="StatusBarStyle" value="lightcontent" />
 
  <plugin name="com.danielcwilson.plugins.googleanalytics" spec="0.6.1" source="pgb" />
- <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
+
+ <gap:plugin name="nl.x-services.plugins.socialsharing" version="4.3.16" />
 <!--  <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
    <gap:plugin name="nl.x-services.plugins.socialsharing" version="4.3.8" />
   <gap:plugin name="cordova-plugin-actionsheet" source="npm" /> -->
