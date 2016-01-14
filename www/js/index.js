@@ -321,7 +321,7 @@ var app = {
 		//////////////////beforesend//////////////////
 		if(who!=='like'){
 			jQuery.fn.exists = function(){return this.length>0;}
-			if ($(selector).exists()) {
+			if ($('#loading').exists()) {
 				$('body').append('<div id="loading" style="text-align:center;"><div class="loadcontent"><img src="img/logo.png" alt="edwalk" /><br/>loading <div class="spinner"> <div class="bounce1"></div> <div class="bounce2"></div> <div class="bounce3"></div> </div> </div></div>');
 			}
 				
