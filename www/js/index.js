@@ -453,13 +453,13 @@ var app = {
 				  });
 				//$("#edwalk").append('ok: ' + JSON.stringify(response));
 				//console.log( response ); // server response
-				setTimeout(function() {
-				  $('#loading').remove();
-				}, 2000);
-				alert('se fini');
+				
 			}
 			//navigator.splashscreen.hide();
-			
+			setTimeout(function() {
+				  $('#loading').remove();
+				}, 2000);
+				//alert('se fini');
 			
 		},
 		error: function(e) {
@@ -639,7 +639,6 @@ var app = {
 		All images © 2000 - '+d.getFullYear()+' Eduard Torrelles  \
 		<div class="settings"> \
 		<a  href="javascript:void(0)" onclick="app.showSettings();" >'+ obj['Settings'][lang] +'<br/><img src="img/settings.png" alt="settings"></a> \
-		<button onclick="window.plugins.socialsharing.share(\'Message only\')">message only</button> \
 		</div> \
 		</div>');
 		window.analytics.trackView('app about');
@@ -880,7 +879,16 @@ for (var i=0; i<l; i++) {
 		/*
 		if(side ==='prev'){ $( "#flipcontent2" ).addClass("transition stayleft");  }else {$( "#flipcontent2" ).addClass("transition stayright"); }
    */
+		var t = item.idate.split(/[- :]/);
+		var url = 'http://edwalk.com/uploads/'+t[0]+'/'+t[1]+'/i5-'+item.thumb_image;
 		
+		var text1 = "";
+		var text2 = "";
+		$.each(item.lascats,function(j,xats){
+			//if(j > 0){ text1 += ", ";}
+			text1 +='<a href="javascript:void(0)" onclick="app.hideExtra('+item.id+'); app.onSearchWebEvent(\'art\',1,'+xats.term_id+',\''+encodeRFC5987ValueChars(xats.name)+'\'); ">'+xats.name+'</a>';
+			text2 += ' '+encodeRFC5987ValueChars(xats.name)+' ';
+		});
 		
 		$("#flipcontent2").html('<div id="extraimg"> <div id="eximg"></div> <div id="exfoot"></div> </div> <div id="extracontent" class=" '+extraclass+'" > <div id="return">  <a href="javascript:void(0)" onclick="app.hideExtra();" title="close"><img src="img/close.png" alt="close"></a>  </div> <div id="extitle"></div> <div id="excats"></div> <div id="exsize"></div>  <div id="exnexprev"></div> <div id="exfoot"></div> </div>'); 
 		
@@ -891,20 +899,16 @@ for (var i=0; i<l; i++) {
 		var actual = $('#'+item.id+' .loveicon img').attr("src");
 		if( actual === "img/fav7.png"){ var imglove = "img/fav7.png";}else{ var imglove = "img/fav2.png";}
 		if(favsID.indexOf(item.id) != -1){ artfav = "<a class='loveicon' href='javascript:void(0)' onclick='app.removeFavs("+item.id+");'><img src='"+imglove+"' alt='favs' /></a>"}else{ artfav = "<a class='loveicon' href='javascript:void(0)' onclick='app.addFavs("+item.id+");'><img src='img/fav1.png' alt='favs' /></a>" }
+		artfav += '<a class="share" href="javascript:void(0)" onclick="window.plugins.socialsharing.share(\'edwalk art: '+item.title+' in '+text2+'\', \'edwalk art\', \''+url+'\', \'http://edwalk.com\')"><img src="img/share.png" alt="share" /></a>';
+		
 		$("#flipcontent2 #return").append(artfav);
 		
-		var t = item.idate.split(/[- :]/);
-		var url = 'http://edwalk.com/uploads/'+t[0]+'/'+t[1]+'/i5-'+item.thumb_image;
+		
 		$("#flipcontent2 #eximg").html("<img src='"+url+"' alt='"+item.title+"' />");
 		$("#flipcontent2 #extitle").html('<h2>'+item.title+'</h2>');
 		
 		//var cca = item.catname.split(",");
-		var text1 = "";
 		
-		$.each(item.lascats,function(j,xats){
-			//if(j > 0){ text1 += ", ";}
-			text1 +='<a href="javascript:void(0)" onclick="app.hideExtra('+item.id+'); app.onSearchWebEvent(\'art\',1,'+xats.term_id+',\''+encodeRFC5987ValueChars(xats.name)+'\'); ">'+xats.name+'</a>';
-		});
 		/*
 		for(var i = 0; i < cca.length; i++) {
 			text1 +='<a href="javascript:void(0)" onclick="app.hideExtra('+item.id+'); app.onSearchWebEvent(\'art\',1,'+catsNameId[cca[i]]+',\''+cca[i]+'\'); ">'+cca[i]+'</a>';
