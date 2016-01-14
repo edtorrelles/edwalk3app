@@ -1,7 +1,7 @@
 ul,li,div,h1,h2,h3 { margin:0px; padding:0px; border:0px;}
 a{text-decoration:none; color:orange;}
 
-
+.share{margin-right:15px;}
 #menu {position:fixed; bottom:0px; left:0px; z-index:850; width:100%;  }
 #menu ul{list-style:none; display: inline-block!important; width:100%; background:#151515; color:#fff; }
 #menu li{display: inline-block; width:19%;
