@@ -546,13 +546,13 @@ var app = {
 				catsNameId[i2tem.nameES] = i2tem.term_id;
 			});	
 		});
-		firstArrayMenu = response;
-		alert('response: '+JSON.stringify(response));
-		alert('firstArrayMenu: '+JSON.stringify(firstArrayMenu));
+		//firstArrayMenu = response;
+		this.store.saveMenuArray(response);
 		app.DrawMenu(response);
 	},
 	DrawMenu: function(response) {
-			alert('DrawMenu: '+JSON.stringify(response));
+		var rerere = this.store.getMenuArray();
+			alert('DrawMenu: '+JSON.stringify(rerere));
 	//console.log('response.tec'+JSON.stringify(response.tec)); 
 	//console.log('response.tem'+teto.length);
 		var lang = this.store.findlang();
@@ -617,11 +617,11 @@ var app = {
 		//this.store.xchangelang(idioma);
 		this.store.xchangelang(idioma,function() {
 			//alert('xchangelang');
-			alert('xchangelang: '+JSON.stringify(firstArrayMenu));
-			app.DrawMenu(firstArrayMenu);
-			alert('xchangelang 2');
+			//alert('xchangelang: '+JSON.stringify(firstArrayMenu));
+			app.DrawMenu();
+			//alert('xchangelang 2');
 			app.showSettings();
-			alert('xchangelang 3');
+			//alert('xchangelang 3');
 		});
 	},
 	showAbout: function() {

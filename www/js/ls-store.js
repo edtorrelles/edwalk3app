@@ -35,6 +35,13 @@ var LocalStorageStore = function(successCallback, errorCallback) {
 		window.localStorage.setItem("lang", idioma);	
 		callback();
 	}
+	this.saveMenuArray = function(menu) { 
+		window.localStorage.setItem("menuArray", JSON.stringify(menu));	
+	}
+	this.getMenuArray = function() { 
+		var menu = window.localStorage.getItem("menuArray");
+		return JSON.parse(menu);
+	}
 	this.findAll = function(callback) { //ED
 		var teto = window.localStorage.getItem("favs");
 		if (typeof teto === 'undefined' || teto === null ) { //alert('a11111 '+teto);
