@@ -547,6 +547,8 @@ var app = {
 			});	
 		});
 		firstArrayMenu = response;
+		alert('response: '+JSON.stringify(response));
+		alert('firstArrayMenu: '+JSON.stringify(firstArrayMenu));
 		app.DrawMenu(response);
 	},
 	DrawMenu: function(response) {
