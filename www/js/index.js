@@ -90,7 +90,7 @@ function doMenu(id) {
 		}*/
 }
 
-var firstArrayMenu;
+var firstArrayMenu = new Array();
 var totquiet = true;
 //var menuOpen = false;
 //var menuDiv = "";	
@@ -298,7 +298,7 @@ var app = {
 		
 		
 		
-		//navigator.splashscreen.hide();
+		navigator.splashscreen.hide();
 		/*
 		$('#prehome').one("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend",
 							  function(event) {
