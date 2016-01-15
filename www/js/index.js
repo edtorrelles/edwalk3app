@@ -549,7 +549,8 @@ var app = {
 		firstArrayMenu = response;
 		app.DrawMenu(response);
 	},
-	DrawMenu: function(response) { 
+	DrawMenu: function(response) {
+			alert('DrawMenu: '+JSON.stringify(response));
 	//console.log('response.tec'+JSON.stringify(response.tec)); 
 	//console.log('response.tem'+teto.length);
 		var lang = this.store.findlang();
@@ -613,8 +614,12 @@ var app = {
 	changelanguage: function(idioma) {
 		//this.store.xchangelang(idioma);
 		this.store.xchangelang(idioma,function() {
+			//alert('xchangelang');
+			alert('xchangelang: '+JSON.stringify(firstArrayMenu));
 			app.DrawMenu(firstArrayMenu);
+			alert('xchangelang 2');
 			app.showSettings();
+			alert('xchangelang 3');
 		});
 	},
 	showAbout: function() {
