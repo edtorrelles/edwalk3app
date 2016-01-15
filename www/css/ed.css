@@ -79,12 +79,12 @@ a{text-decoration:none; color:orange;}
 .hideextra {float:left;}
 #return {  /*position:fixedd; top:0px; right:0px;*/ text-align:right;display:block;  margin-top:40px; margin-right:25px; margin-left: 30px; }
 #return a {display:inline-block; margin-bottom:10px;}
-.artpeu { font-size:16px; color:#ccc; padding:10px;  position:relative;}
-.artpeu h2 { font-size:18px; /*color:orange;*/}
+.artpeu .artcats { font-size:14px; }
+.artpeu h2 { font-size:18px; margin-bottom: 10px; /*color:orange;*/}
 .artsize {position:absolute; top:-29px; right:0px; background:rgba(0,0,0,0.8);padding:5px 10px; font-size:14px;}
 .artshadow {display:none; position:absolute; top:0px; right:0px;  width:100%; height:100%; background:rgba(0,0,0,0);}
 .artfav {position:absolute; top:5px; right:10px;}
-.artfav img {width:30px; height:30px;}
+#edwalk .artfav img {width:30px; height:30px;}
 
 #about{ padding: 20px; text-align:left; color:#ccc; text-transform: initial; font-size: 16px;}
 #about h2,#about p{color:#fff;}

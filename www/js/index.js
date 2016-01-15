@@ -145,7 +145,7 @@ var app = {
 		document.addEventListener("online", this.onConnectionOnline, false);
         document.addEventListener("offline", this.onConnectionOffline, false); 
 		
-		app.onSearchWebEvent('contruct');
+		
 		
 		
 		var obj = document.getElementById('flippopup');
@@ -246,13 +246,13 @@ var app = {
 		);
 		navigator.notification.alert('You are the winner!');
 		*/
-		
+		app.onSearchWebEvent('contruct');
         app.receivedEvent('deviceready');
 		
 		document.addEventListener("menubutton", doMenu, false);
 		
 		
-		window.analytics.startTrackerWithId('UA-71798739-1');
+		  window.analytics.startTrackerWithId('UA-71798739-1');
 		
 		//var el = document.getElementById("#flipcontent");
 		//  el.addEventListener("touchstart", handleStart, false);
@@ -298,7 +298,7 @@ var app = {
 		
 		
 		
-		navigator.splashscreen.hide();
+		  navigator.splashscreen.hide();
 		/*
 		$('#prehome').one("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend",
 							  function(event) {
@@ -331,10 +331,10 @@ var app = {
 					
 				if (typeof catname != 'undefined') { 
 					cattts ="<span style='color:#fff;'>"+decodeURIComponent(catname)+" </span>"; 
-					window.analytics.trackView('app cat: '+decodeURIComponent(catname));
+					  window.analytics.trackView('app cat: '+decodeURIComponent(catname));
 				/*window.analytics.trackView(decodeURIComponent(catname)); */
 				} else { 
-					window.analytics.trackView('app home');
+					  window.analytics.trackView('app home');
 					cattts ="<span>edwalk </span>"; lologo = "<img src='img/woki22.png' alt='edwalk' /><br/>"; 
 				/*window.analytics.trackView('edwalk home');*/ 
 				}
@@ -398,6 +398,7 @@ var app = {
 				//var d = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
 				
 				if(who==="contruct"){
+					//console.log('response1: '+response);
 					app.createMenu(response);
 				}else{
 					app.onNewPrint(who,response,page,cat);
@@ -547,12 +548,13 @@ var app = {
 			});	
 		});
 		//firstArrayMenu = response;
+		//console.log('response2: '+response);
 		this.store.saveMenuArray(response);
-		app.DrawMenu(response);
+		app.DrawMenu();
 	},
-	DrawMenu: function(response) {
-		var rerere = this.store.getMenuArray();
-			alert('DrawMenu: '+JSON.stringify(rerere));
+	DrawMenu: function() {
+		var response = this.store.getMenuArray();
+			//alert('DrawMenu: '+JSON.stringify(rerere));
 	//console.log('response.tec'+JSON.stringify(response.tec)); 
 	//console.log('response.tem'+teto.length);
 		var lang = this.store.findlang();
@@ -611,7 +613,7 @@ var app = {
 		<a class="asett '+langEN+'" href="javascript:void(0)" onclick="app.changelanguage( \'EN\' );" >English <span id="EN"></span></a> \
 		</div> \
 		</div>');
-		window.analytics.trackView('app settings');
+		  window.analytics.trackView('app settings');
 	},
 	changelanguage: function(idioma) {
 		//this.store.xchangelang(idioma);
@@ -642,7 +644,7 @@ var app = {
 		edwalk.innerHTML = "<div id='topedbar'><h2><span style='color:#fff;'>"+ obj['about'][lang] +"</span> ed</h2></div><div id='sticky-anchor'></div><div id='istop' class=''><h2><span style='color:#fff;'>"+ obj['about'][lang] +"</span> ed</h2></div>";
 		$('#edwalk').append('<div id="about"> \
 		<div class="targeta"><img class="aboutlogo" src="img/woki22.png" alt="edwalk" /></div> <h2>'+ obj['Portfolio'][lang] +'</h2> \
-		<h3>Painting, Illustration and sketches</h3> \
+		<h3>'+ obj['Painting'][lang] +'</h3> \
 		<p>'+ obj['Myname'][lang] +'</p> \
 		Bacelona, Spain \
 		<p><a href="javascript:void(0)" onclick="window.open(\'http://edwalk.com\', \'_system\');" ><h3><strong>edwalk.com</strong></h3></a></p>		\
@@ -652,7 +654,7 @@ var app = {
 		<a class="share" href="javascript:void(0)" onclick="window.plugins.socialsharing.share(\' edwalk art -  Portfolio of Visual Artist ed Torrelles - Painting, Illustration and sketches \', \'edwalk art\', \'www/img/logo.png\', \'http://edwalk.com\')"><img src="img/share.png" alt="share" /></a> \
 		</div> \
 		</div>');
-		window.analytics.trackView('app about');
+		  window.analytics.trackView('app about');
 	},
 	clearFavsConfirm: function(buttonIndex) {	// log('<br/><br/><br/>'+buttonIndex);
 		if(buttonIndex === 1){// log('<br/><br/><br/>buttonIndex '+buttonIndex);
@@ -774,7 +776,7 @@ for (var i=0; i<l; i++) {
 			}
         });
 	
-	window.analytics.trackView('app show favs');
+	  window.analytics.trackView('app show favs');
 	
 	},
 	addFavs: function(id) {
@@ -972,6 +974,6 @@ for (var i=0; i<l; i++) {
 		$('#flipcontent').animate({
 			scrollTop: 0
 		}, 500);*/
-		window.analytics.trackView('app popup: '+item.title);
+		  window.analytics.trackView('app popup: '+item.title);
 	}
 };
