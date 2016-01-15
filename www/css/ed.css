@@ -161,6 +161,9 @@ a{text-decoration:none; color:orange;}
 #excats a {padding:10px 20px 10px 0px; background:rgba(0,0,0,0); display:inline-block; font-weight:bold; font-size:14px;}
 #exfoot{display:block; height:80px; width:100%;}
 #exnexprev a {width:50%; display:inline-block; text-align:center; background:rgba(0,0,0,0);}
+@media only screen and (max-width: 700px){
+#edwalk .art img { margin-top:0px !important; }
+}
 /* @media only screen and (min-device-width: 700px){ */
 @media only screen and (min-width: 700px){
        /* default iPad screens */
